@@ -39,7 +39,7 @@ public class Prenotazione implements Serializable{
 	private Tavolo tavolo;
 	
 	//TODO cercare annotation per la crezione automatica della prenotazione progetto vecchio
-	private ZonedDateTime orarioPrenotaizone; //TODO cambiare nome
+	private ZonedDateTime orarioPrenotazione;
 
 	private ZonedDateTime orarioPresuntoArrivo;
 	

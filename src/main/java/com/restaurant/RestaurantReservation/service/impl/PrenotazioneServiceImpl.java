@@ -85,7 +85,7 @@ public class PrenotazioneServiceImpl implements PrenotazioneService{
 		Prenotazione prenota = new Prenotazione();
 		log.info("Set delle variabili della prenotazione");
 		prenota.setTavolo(tavolo);
-		prenota.setOrarioPrenotaizone(ZonedDateTime.of(LocalDateTime.now(), ZoneId.systemDefault()));
+		prenota.setOrarioPrenotazione(ZonedDateTime.of(LocalDateTime.now(), ZoneId.systemDefault()));
 		prenota.setOrarioPresuntoArrivo(prenotazione.getOrarioArrivo());
 		prenota.setEvento(evento);
 		prenota.setNote(prenotazione.getNote());
@@ -98,7 +98,7 @@ public class PrenotazioneServiceImpl implements PrenotazioneService{
 				prenota.getTavolo().getIdTavolo(), 
 				prenota.getTavolo().getNote(), 
 				prenota.getTavolo().getNumeroPosti(), 
-				prenota.getOrarioPrenotaizone().withZoneSameInstant(ZoneId.of("Europe/Rome")), 
+				prenota.getOrarioPrenotazione().withZoneSameInstant(ZoneId.of("Europe/Rome")), 
 				prenota.getOrarioPresuntoArrivo().withZoneSameInstant(ZoneId.of("Europe/Rome")), 
 				prenota.getEvento().getIdEvento(), 
 				prenota.getEvento().getDescrizione(), 
@@ -130,7 +130,7 @@ public class PrenotazioneServiceImpl implements PrenotazioneService{
 		}
 		
 		prenotazione.setTavolo(tavolo);
-		prenotazione.setOrarioPrenotaizone(ZonedDateTime.of(LocalDateTime.now(), ZoneId.systemDefault()));
+		prenotazione.setOrarioPrenotazione(ZonedDateTime.of(LocalDateTime.now(), ZoneId.systemDefault()));
 		prenotazione.setOrarioPresuntoArrivo(prenotazione.getOrarioPresuntoArrivo());
 		prenotazione.setEvento(evento);
 		prenotazione.setNote(prenotazione.getNote());
