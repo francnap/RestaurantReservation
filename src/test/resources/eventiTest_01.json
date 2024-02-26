@@ -1,0 +1,17 @@
+{
+	"createEventi": 
+	[
+		{
+			"minDurataEvento": 60,
+			"descrizione": "aperitivo"
+		},
+		{
+			"minDurataEvento": 75,
+			"descrizione": "pranzo"
+		},
+		{
+			"minDurataEvento": 100,
+			"descrizione": "cena"
+		}
+	]
+}

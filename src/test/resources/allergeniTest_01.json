@@ -1,0 +1,14 @@
+{
+	"createAllergeni":
+	[
+		{
+	    "nomeAllergene": "lattosio"
+		},
+		{
+	    "nomeAllergene": "arachidi"
+		},
+		{
+	    "nomeAllergene": "glutine"
+		}
+	]
+}

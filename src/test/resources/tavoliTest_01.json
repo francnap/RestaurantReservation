@@ -1,0 +1,45 @@
+{
+	"createTavoli": 
+	[
+		{
+			"note": "Vicino la cucina",
+			"numeroPosti": 1
+		},
+		{
+			"note": "Fondo sala",
+			"numeroPosti": 2
+		},
+		{
+			"note": "Centro sala",
+			"numeroPosti": 3
+		},
+		{
+			"note": "Vicino ai bagni",
+			"numeroPosti": 4
+		},
+		{
+			"note": "Vicino le scale",
+			"numeroPosti": 5
+		},
+		{
+			"note": "Fuori dal locale",
+			"numeroPosti": 6
+		},
+		{
+			"note": "Centro sala",
+			"numeroPosti": 7
+		},
+		{
+			"note": "Vicino la cassa",
+			"numeroPosti": 8
+		},
+		{
+			"note": "Vicino l'entrata",
+			"numeroPosti": 9
+		},
+		{
+			"note": "Vicino la finestra",
+			"numeroPosti": 10
+		}
+	]
+}
