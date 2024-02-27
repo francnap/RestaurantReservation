@@ -19,11 +19,6 @@ import com.restaurant.RestaurantReservation.utilities.FromFile;
 public class AllergeneControllerTest {
 	
 	private MockMvc mockMvc;
-	
-	@Autowired
-	private MockMvc mockMvcAll;
-	
-	private ObjectMapper objectMapper = new ObjectMapper();
 
 	@Autowired
 	public AllergeneControllerTest(MockMvc mockMvc) {
@@ -31,14 +26,14 @@ public class AllergeneControllerTest {
 	}
 	
 	
-	
 	@Test
 	void allergeniTest() throws Exception{
-		MvcResult insertAllergeni = this.mockMvcAll.perform(
+		//		MvcResult insertAllergeni = 
+		mockMvc.perform(
 				post("/allergeni/salvaAllergeni")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(FromFile.fromFile("allergeniTest_01.json", "createAllergeni")))
-				.andExpect(status().isCreated())
-				.andReturn();
+		.andExpect(status().isCreated())
+		.andReturn();
 	}
 }
