@@ -68,7 +68,7 @@ public class SezioneMenuServiceImpl implements SezioneMenuService{
 			
 			log.info("Set delle varibili della singola sezione");
 			SezioneMenu sezMenu = new SezioneMenu();
-			sezMenu.setDescizione(item.getDescizione());
+			sezMenu.setDescizione(item.getDescrizione());
 			sezMenu.setMenu(menu);
 			
 			log.info("Salvataggio della sezione sul DB");

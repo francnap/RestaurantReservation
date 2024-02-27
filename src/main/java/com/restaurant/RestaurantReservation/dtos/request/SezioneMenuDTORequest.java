@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class SezioneMenuDTORequest {
 	
 	//variabili
-	private String descizione;
+	private String descrizione;
 	private Integer menu;
 }
