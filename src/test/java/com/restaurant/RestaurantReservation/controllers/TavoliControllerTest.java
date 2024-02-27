@@ -19,12 +19,7 @@ import com.restaurant.RestaurantReservation.utilities.FromFile;
 public class TavoliControllerTest {
 	
 	private MockMvc mockMvc;
-	
-	@Autowired
-	private MockMvc mockMvcAll;
-	
-	private ObjectMapper objectMapper = new ObjectMapper();
-	
+
 	@Autowired
 	public TavoliControllerTest(MockMvc mockMvc) {
 		this.mockMvc = mockMvc;
@@ -34,11 +29,12 @@ public class TavoliControllerTest {
 	
 	@Test
 	void tavoliTest() throws Exception{
-		MvcResult insertTavoli = this.mockMvcAll.perform(
+		//		MvcResult insertTavoli = 
+		mockMvc.perform(
 				post("/tavoli/salvaTavoli")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(FromFile.fromFile("tavoliTest_01.json", "createTavoli")))
-				.andExpect(status().isCreated())
-				.andReturn();
+		.andExpect(status().isCreated())
+		.andReturn();
 	}
 }
