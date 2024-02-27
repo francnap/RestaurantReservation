@@ -64,7 +64,7 @@ public class TavoloController {
 	 * @return Lista dei tavoli appena inseriti.
 	 * @throws MissingData
 	 */
-	@PostMapping(value = "/salvaTavoli")
+	@PostMapping(value = "/salva-tavoli")
 	public ResponseEntity<List<TavoloDTOResponse>> createTavolo(@RequestBody List<TavoloDTORequest> listaTavoli) throws MissingData{
 		log.info("Salvataggio dei tavoli");
 		List<TavoloDTOResponse> insertTavoli = tavoloService.createTavoli(listaTavoli);
@@ -93,7 +93,7 @@ public class TavoloController {
 	 * @return true nel caso l'eliminazione abbia successo.
 	 * @throws NotFoundException
 	 */
-	@DeleteMapping("/eliminaTavolo/{id}")
+	@DeleteMapping("/elimina-tavolo/{id}")
 	public ResponseEntity<Boolean> deleteTavolo(@PathVariable("id") Integer idTavolo) throws NotFoundException {
 		log.info("Eliminazione del tavolo con id: " + idTavolo);
 		tavoloService.deleteTavoloById(idTavolo);
@@ -106,7 +106,7 @@ public class TavoloController {
 	 * @return lista dei tavoli utilizzabili.
 	 * @throws NotFoundException
 	 */
-	@PatchMapping(value = "/eliminaTavoli")
+	@PatchMapping(value = "/elimina-tavoli")
 	public ResponseEntity<List<TavoloDTOResponse>> logicDeleteTavoli(@RequestBody List<LogicDeleteTavoloDTORequest> logicTavoli) throws NotFoundException{
 		log.info("Eliminazione logica di uno o più tavoli");
 		List<TavoloDTOResponse> tavoliEliminati = tavoloService.logicDeleteTavoli(logicTavoli);

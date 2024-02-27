@@ -6,4 +6,5 @@ import com.restaurant.RestaurantReservation.entities.Menu;
 
 public interface MenuRepository extends JpaRepository<Menu, Integer>{
 
+	Menu findMenuByIdMenu(Integer menu);
 }

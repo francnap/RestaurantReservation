@@ -1,5 +1,6 @@
 package com.restaurant.RestaurantReservation.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -23,8 +24,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Menu {
-	
+public class Menu implements Serializable{
+
+	private static final long serialVersionUID = 6971014865310729263L;
+
 	//varibili
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

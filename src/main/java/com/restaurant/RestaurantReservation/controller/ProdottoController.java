@@ -67,7 +67,7 @@ public class ProdottoController {
 	 * @throws NotFoundException 
 	 * @throws MissingData
 	 */
-	@PostMapping(value = "/salvaProdotti")
+	@PostMapping(value = "/salva-prodotti")
 	public ResponseEntity<List<ProdottoDTOResponse>> createProdotto(@RequestBody List<ProdottoDTORequest> listaProdotti) throws DatiDuplicatiException, NotFoundException {
 		log.info("Salvataggio dei prodotti");
 		List<ProdottoDTOResponse> prodotti = prodottoService.createProdotti(listaProdotti);
@@ -82,7 +82,7 @@ public class ProdottoController {
 	 * @throws NotFoundException
 	 * @throws DatiDuplicatiException 
 	 */
-	@PatchMapping(value = "/updateProdotto/{id}")
+	@PatchMapping(value = "/update-prodotto/{id}")
 	public ResponseEntity<ProdottoDTOResponse> updateProdotto(@PathVariable("id") Integer idProdotto, 
 															  @Valid @RequestBody ProdottoDTORequest prodottoRequest) throws NotFoundException, DatiDuplicatiException {
 		log.info("Update del prodotto con id: " + idProdotto);
@@ -98,7 +98,7 @@ public class ProdottoController {
 	 * @return Prodotto aggiornato senza allergene eliminato.
 	 * @throws NotFoundException
 	 */
-	@PatchMapping(value = "/deleteAllergeneDalProdotto/{id}")
+	@PatchMapping(value = "/delete-allergene-dal-prodotto/{id}")
 	public ResponseEntity<ProdottoDTOResponse> deleteAllergene(@PathVariable("id") Integer idProdotto, 
 															   @Valid @RequestBody AllergeneDeleteDTORequest allergene) throws NotFoundException {
 		log.info("Eliminazione di un allergene da un prodotto");
@@ -113,7 +113,7 @@ public class ProdottoController {
 	 * @return Lista prodotti disponibili.
 	 * @throws NotFoundException
 	 */
-	@PatchMapping(value = "/disattivaProdotti")
+	@PatchMapping(value = "/disattiva-prodotti")
 	public ResponseEntity<List<ProdottoDTOResponse>> logicDeleteProdotto(@RequestBody List<LogicDeleteProdottoDTORequest> logicProdotti) {
 		log.info("Eliminazione logica di uno o più prodotti");
 		List<ProdottoDTOResponse> prodottiEliminati = prodottoService.logicDeleteProdotti(logicProdotti);
@@ -126,7 +126,7 @@ public class ProdottoController {
 	 * @return true nel caso l'eliminazione abbia successo.
 	 * @throws NotFoundException
 	 */
-	@DeleteMapping(value = "/eliminaProdotto/{id}")
+	@DeleteMapping(value = "/elimina-prodotto/{id}")
 	public ResponseEntity<Boolean> deleteProdotto(@PathVariable("id") Integer idProdotto) throws NotFoundException {
 		log.info("Eliminazione di un prodotto con id: " + idProdotto);
 		prodottoService.deleteProdottoById(idProdotto);

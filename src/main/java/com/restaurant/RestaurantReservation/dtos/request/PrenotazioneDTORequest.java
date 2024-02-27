@@ -18,7 +18,11 @@ public class PrenotazioneDTORequest {
 	private String note;
 	private Integer numeroPosti;
 	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss z")
-	private ZonedDateTime orarioArrivo;
+	private ZonedDateTime orarioPresuntoArrivo;
+	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss z")
+	private ZonedDateTime orarioRealeArrivo;
+	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss z")
+	private ZonedDateTime orarioChiusuraPrenotazione;
 	private Integer tavolo;
 	private Integer evento;
 }

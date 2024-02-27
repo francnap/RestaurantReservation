@@ -1,8 +1,6 @@
 package com.restaurant.RestaurantReservation.service.impl;
 
-import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -78,15 +76,14 @@ public class PrenotazioneServiceImpl implements PrenotazioneService{
 		
 		log.info("Controllo se i dati sono stati inseriti correttamente");
 		if(prenotazione.getNote().equals(null) || prenotazione.getNote().isBlank() || 
-				prenotazione.getOrarioArrivo().equals(null)) {
+				prenotazione.getOrarioPresuntoArrivo().equals(null)) {
 			throw new NotFoundException("Mancato inserimento di dati necessari.");
 		}
 		
 		Prenotazione prenota = new Prenotazione();
 		log.info("Set delle variabili della prenotazione");
 		prenota.setTavolo(tavolo);
-		prenota.setOrarioPrenotazione(ZonedDateTime.of(LocalDateTime.now(), ZoneId.systemDefault()));
-		prenota.setOrarioPresuntoArrivo(prenotazione.getOrarioArrivo());
+		prenota.setOrarioPresuntoArrivo(prenotazione.getOrarioPresuntoArrivo());
 		prenota.setEvento(evento);
 		prenota.setNote(prenotazione.getNote());
 		
@@ -100,6 +97,8 @@ public class PrenotazioneServiceImpl implements PrenotazioneService{
 				prenota.getTavolo().getNumeroPosti(), 
 				prenota.getOrarioPrenotazione().withZoneSameInstant(ZoneId.of("Europe/Rome")), 
 				prenota.getOrarioPresuntoArrivo().withZoneSameInstant(ZoneId.of("Europe/Rome")), 
+				prenota.getOrarioRealeArrivo() == null ? null : prenota.getOrarioRealeArrivo().withZoneSameInstant(ZoneId.of("Europe/Rome")), 
+				prenota.getOrarioChiusuraPrenotazione() == null ? null : prenota.getOrarioChiusuraPrenotazione().withZoneSameInstant(ZoneId.of("Europe/Rome")), 
 				prenota.getEvento().getIdEvento(), 
 				prenota.getEvento().getDescrizione(), 
 				prenota.getNote(), 
@@ -130,8 +129,12 @@ public class PrenotazioneServiceImpl implements PrenotazioneService{
 		}
 		
 		prenotazione.setTavolo(tavolo);
-		prenotazione.setOrarioPrenotazione(ZonedDateTime.of(LocalDateTime.now(), ZoneId.systemDefault()));
+		prenotazione.setOrarioPrenotazione(prenotazione.getOrarioPrenotazione());
 		prenotazione.setOrarioPresuntoArrivo(prenotazione.getOrarioPresuntoArrivo());
+		prenotazione.setOrarioRealeArrivo(prenotazioneRequest.getOrarioRealeArrivo() == null ? 
+				prenotazione.getOrarioRealeArrivo() : prenotazioneRequest.getOrarioRealeArrivo());
+		prenotazione.setOrarioChiusuraPrenotazione(prenotazioneRequest.getOrarioChiusuraPrenotazione() == null ? 
+				prenotazione.getOrarioChiusuraPrenotazione() : prenotazioneRequest.getOrarioChiusuraPrenotazione());
 		prenotazione.setEvento(evento);
 		prenotazione.setNote(prenotazione.getNote());
 		

@@ -65,7 +65,7 @@ public class EventoController {
 	 * @throws MissingData
 	 * @throws DatiDuplicatiException 
 	 */
-	@PostMapping(value = "/salvaEventi")
+	@PostMapping(value = "/salva-eventi")
 	public ResponseEntity<List<EventoDTOResponse>> createEvento(@RequestBody List<EventoDTORequest> listaEventi) throws MissingData{
 		log.info("Salvataggio degli eventi");
 		List<EventoDTOResponse> insertEventi = eventoService.createEventi(listaEventi);
@@ -94,7 +94,7 @@ public class EventoController {
 	 * @return true nel caso l'eliminazione abbia successo.
 	 * @throws NotFoundException
 	 */
-	@DeleteMapping(value = "/eliminaEvento/{id}")
+	@DeleteMapping(value = "/elimina-evento/{id}")
 	public ResponseEntity<Boolean> deleteEvento(@PathVariable("id") Integer idEvento) throws NotFoundException {
 		log.info("Eliminazione di un evento tramite il suo id: " + idEvento);
 		eventoService.deleteEventoById(idEvento);

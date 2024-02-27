@@ -1,5 +1,7 @@
 package com.restaurant.RestaurantReservation.entities;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,8 +19,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SezioneMenuProdotti {
-	
+public class SezioneMenuProdotti implements Serializable{
+
+	private static final long serialVersionUID = -1355981550206361515L;
+
 	//variabili
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

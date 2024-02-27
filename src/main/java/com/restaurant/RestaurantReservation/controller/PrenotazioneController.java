@@ -65,7 +65,7 @@ public class PrenotazioneController {
 	 * @throws MissingData
 	 * @throws NotFoundException 
 	 */
-	@PostMapping(value = "/salvaPrenotazione")
+	@PostMapping(value = "/salva-prenotazione")
 	public ResponseEntity<PrenotazioneDTOResponse> createPrenotazione(@RequestBody PrenotazioneDTORequest prenotazione) throws MissingData, NotFoundException {
 		log.info("Salvataggio della prenotazione");
 		PrenotazioneDTOResponse insertPrenotazione = prenotazioneService.createPrenotazione(prenotazione);
@@ -79,7 +79,7 @@ public class PrenotazioneController {
 	 * @return Prenotazione aggiornata.
 	 * @throws NotFoundException
 	 */
-	@PatchMapping(value = "/updatePrenotazione/{id}")
+	@PatchMapping(value = "/update-prenotazione/{id}")
 	public ResponseEntity<PrenotazioneDTOResponse> updatePrenotazione(@PathVariable("id") Integer idPrenotazione, 
 																	  @Valid @RequestBody PrenotazioneDTORequest prenotazioneRequest) throws NotFoundException {
 		log.info("Update della prenotazione con id: " + idPrenotazione);
@@ -94,7 +94,7 @@ public class PrenotazioneController {
 	 * @return true nel caso l'eliminazione abbia successo.
 	 * @throws NotFoundException
 	 */
-	@DeleteMapping("/eliminaPrenotazione")
+	@DeleteMapping("/elimina-prenotazione")
 	public ResponseEntity<Boolean> deletePrenotazione(@RequestBody PrenotazioneDTODeleteRequest deletedPrenotazione) throws NotFoundException {
 		log.info("Eliminazione di una prenotazione a nome di: " + deletedPrenotazione.getNote());
 		prenotazioneService.deletePrenotazioneByNomePrenotante(deletedPrenotazione);

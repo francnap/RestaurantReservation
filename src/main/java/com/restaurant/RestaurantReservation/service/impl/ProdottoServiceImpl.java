@@ -219,6 +219,7 @@ public class ProdottoServiceImpl implements ProdottoService{
 	}
 
 	@Override
+	@Transactional
 	public List<ProdottoDTOResponse> logicDeleteProdotti(List<LogicDeleteProdottoDTORequest> logicProdotti) {
 		log.info("Eliminazione logica di uno o più prodotti");
 		List<ProdottoDTOResponse> list = new ArrayList<>();
@@ -256,6 +257,13 @@ public class ProdottoServiceImpl implements ProdottoService{
 	@Override
 	@Transactional
 	public void deleteProdottoById(Integer idProdotto) throws NotFoundException {
-		prodottoRepo.deleteById(getProdottoById(idProdotto).getIdProdotto());
+		Optional<Prodotto> prodotto = prodottoRepo.findById(idProdotto);
+		
+		if(prodotto.isEmpty()) {
+			throw new NotFoundException("Nessun prodotto trovato con id: " + idProdotto);
+		}
+		
+		prodAllergeniRepo.deleteAllProdottiAllergeniByProdotto(prodotto.get());
+		prodottoRepo.deleteById(prodotto.get().getIdProdotto());
 	}
 }

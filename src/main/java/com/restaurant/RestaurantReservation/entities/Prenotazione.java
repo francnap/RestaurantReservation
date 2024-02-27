@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.Entity;
@@ -38,7 +40,7 @@ public class Prenotazione implements Serializable{
 	@JoinColumn(name = "id_tavolo")
 	private Tavolo tavolo;
 	
-	//TODO cercare annotation per la crezione automatica della prenotazione progetto vecchio
+	@CreationTimestamp
 	private ZonedDateTime orarioPrenotazione;
 
 	private ZonedDateTime orarioPresuntoArrivo;
@@ -53,7 +55,7 @@ public class Prenotazione implements Serializable{
 	
 	private String note;
 	
-	//relaizoni
+	//relazioni
 	@OneToMany(mappedBy = "prenotazione")
 	private List<Ordinazione> ordinazioni;
 }

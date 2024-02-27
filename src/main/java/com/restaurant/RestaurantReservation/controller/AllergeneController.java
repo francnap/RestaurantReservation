@@ -65,7 +65,7 @@ public class AllergeneController {
 	 * @throws MissingData 
 	 * @throws DatiDuplicatiException 
 	 */
-	@PostMapping(value = "/salvaAllergeni")
+	@PostMapping(value = "/salva-allergeni")
 	public ResponseEntity<List<AllergeneDTOResponse>> createAllergene(@RequestBody List<AllergeneDTORequest> listaAllergeni) throws MissingData, DatiDuplicatiException{
 		log.info("Salvataggio degli allergeni");
 		List<AllergeneDTOResponse> insertAllergeni = allergeneService.createAllergeni(listaAllergeni);
@@ -94,7 +94,7 @@ public class AllergeneController {
 	 * @return true in caso di eliminazione corretta.
 	 * @throws NotFoundException
 	 */
-	@DeleteMapping("/eliminaAllergene/{id}")
+	@DeleteMapping("/elimina-allergene/{id}")
 	public ResponseEntity<Boolean> deleteAllergene(@PathVariable("id") Integer idAllergene) throws NotFoundException {
 		log.info("Eliminazione di un allergene tramite il suo id: " + idAllergene);
 		allergeneService.deleteAllergeneById(idAllergene);

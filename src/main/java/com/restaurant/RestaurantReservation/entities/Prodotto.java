@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -45,7 +44,7 @@ public class Prodotto implements Serializable{
 	private Double prezzo;
 	
 	//relazioni
-	@OneToMany(mappedBy = "prodotto", cascade = CascadeType.ALL) //TODO togliere cascade all e gestire tutto nel service
+	@OneToMany(mappedBy = "prodotto")
 	private List<ProdottiAllergeni> prodottiAllergeni;
 	
 	@OneToMany(mappedBy = "prodotto")

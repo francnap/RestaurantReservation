@@ -10,4 +10,6 @@ import com.restaurant.RestaurantReservation.entities.Prodotto;
 public interface ProdottiAllergeniRepository extends JpaRepository<ProdottiAllergeni, Integer>{
 
 	List<ProdottiAllergeni> findAllByProdotto(Prodotto prodotto);
+
+	void deleteAllProdottiAllergeniByProdotto(Prodotto prodotto);
 }
