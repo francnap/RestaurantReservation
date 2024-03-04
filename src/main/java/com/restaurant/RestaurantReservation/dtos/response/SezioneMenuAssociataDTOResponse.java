@@ -1,7 +1,5 @@
 package com.restaurant.RestaurantReservation.dtos.response;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -15,11 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @JsonInclude(Include.NON_NULL)
-public class MenuDTOResponse {
+public class SezioneMenuAssociataDTOResponse {
 	
 	//variabili
-	private Integer idMenu;
-	private String descMenu;
-	@JsonInclude(Include.NON_EMPTY)
-	private List<SezioneMenuDTOResponse> sezioni;
+	private Integer idSezioneMenu;
+	private String descrizione;
 }
