@@ -1,5 +1,7 @@
 package com.restaurant.RestaurantReservation.dtos.response;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -17,9 +19,9 @@ public class SezioneMenuDTOResponse {
 	
 	//variabili
 	private Integer idSezioneMenu;
-	private String descizione;
+	private String descrizione;
 	private Integer idMenu;
 	private String descMenu;
-//	@JsonInclude(Include.NON_EMPTY)
-//	private List<SezioneMenuProdotti> sezioni;
+	@JsonInclude(Include.NON_EMPTY)
+	private List<ProdottoDTOResponse> prodotti;
 }

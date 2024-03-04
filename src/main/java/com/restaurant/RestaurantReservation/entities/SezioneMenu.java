@@ -37,7 +37,7 @@ public class SezioneMenu implements Serializable{
 	
 	@Column(unique = true)
 	@NotNull
-	private String descizione;
+	private String descrizione;
 	
 	@JoinColumn(name = "id_menu")
 	@ManyToOne
