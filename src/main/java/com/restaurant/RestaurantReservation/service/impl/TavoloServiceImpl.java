@@ -10,6 +10,10 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +25,7 @@ import com.restaurant.RestaurantReservation.exceptions.MissingData;
 import com.restaurant.RestaurantReservation.exceptions.NotFoundException;
 import com.restaurant.RestaurantReservation.repository.TavoloRepository;
 import com.restaurant.RestaurantReservation.service.TavoloService;
+import com.restaurant.RestaurantReservation.utils.StaticModelMapper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -43,6 +48,14 @@ public class TavoloServiceImpl implements TavoloService{
 				.stream()
 				.map(tavolo -> modelMapper.map(tavolo, TavoloDTOResponse.class))
 				.collect(Collectors.toList());
+	}
+	
+	@Override
+	public Page<TavoloDTOResponse> getTavoliDisponibili(Boolean utilizzabile, Integer page, Integer size) {
+		Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Order.asc("idTavolo")));
+		
+		return tavoloRepo.findByUtilizzabile(utilizzabile, pageable)
+				.map(tavolo -> StaticModelMapper.convert(tavolo, TavoloDTOResponse.class));
 	}
 	
 	@Override

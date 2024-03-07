@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.restaurant.RestaurantReservation.dtos.request.LogicDeleteTavoloDTORequest;
@@ -44,6 +46,21 @@ public class TavoloController {
 	public ResponseEntity<List<TavoloDTOResponse>> getAllTavoli(){
 		log.info("Get all di tutti i tavoli");
 		return new ResponseEntity<>(tavoloService.getAllTavoli(), HttpStatus.OK);
+	}
+	
+	/**
+	 * Get all di tutti i tavoli disponibili nella base dati. Paginati.
+	 * @param disp
+	 * @param page
+	 * @param size
+	 * @return lista dei tavoli dispinibili paginati.
+	 */
+	@GetMapping(value = "/tavoli-disponibili")
+	public ResponseEntity<Page<TavoloDTOResponse>> getTavoliDisponibili(@RequestParam(required = true, defaultValue = "${profilo.utilizzabile.descrizione}") Boolean utile,
+																		@RequestParam(required = true, defaultValue = "${profilo.page.descrizione}") Integer page, 
+			  															@RequestParam(required = true, defaultValue = "${profilo.size.descrizione}") Integer size) {
+		log.info("Get all di tutti i tavoli disponiili con paginazione");
+		return new ResponseEntity<>(tavoloService.getTavoliDisponibili(utile, page, size), HttpStatus.OK);
 	}
 	
 	/**
