@@ -9,7 +9,18 @@ spring:
     password: password
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
   h2:
     console:
       enabled: true
       path: /consoledb
+      
+      
+#PROPRIETA-PAGINAZIONE
+profilo: 
+  utilizzabile:
+    descrizione: true
+  page: 
+    descrizione: 0
+  size:
+    descrizione: 10

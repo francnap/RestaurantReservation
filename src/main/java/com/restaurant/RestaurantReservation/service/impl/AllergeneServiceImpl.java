@@ -1,6 +1,7 @@
 package com.restaurant.RestaurantReservation.service.impl;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -42,6 +43,7 @@ public class AllergeneServiceImpl implements AllergeneService{
 	public List<AllergeneDTOResponse> getAllAllergeni() {
 		return allergeneRepo.findAll()
 				.stream()
+				.sorted(Comparator.comparing(Allergene::getIdAllergene))
 				.map(allergene -> modelMapper.map(allergene, AllergeneDTOResponse.class))
 				.collect(Collectors.toList());
 	}
@@ -76,16 +78,14 @@ public class AllergeneServiceImpl implements AllergeneService{
 				log.info("Salvataggio dell'allergene sul DB");
 				allergeneRepo.save(allergene);
 			} catch (DataIntegrityViolationException e) {
-				throw new DatiDuplicatiException(String.format("Errore: Dati duplicati, l'entità con questo valore '%s' già esiste.", allergene.getNomeAllergene()));
+				throw new DatiDuplicatiException(String.format("Errore: Dati duplicati, l'allergene con questo valore '%s' esiste già.", allergene.getNomeAllergene()));
 			}
 			
-			AllergeneDTOResponse allergeneResponse = new AllergeneDTOResponse(
-					allergene.getIdAllergene(),
-					allergene.getNomeAllergene()
-			);
-			
 			log.info("Creo la lista degli allergeni response");
-			list.add(allergeneResponse);
+			list.add(AllergeneDTOResponse.builder()
+											.idAllergene(allergene.getIdAllergene())
+											.nomeAllergene(allergene.getNomeAllergene())
+										 .build());
 		}
 		return list;
 	}

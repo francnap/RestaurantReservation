@@ -2,6 +2,8 @@ package com.restaurant.RestaurantReservation.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.restaurant.RestaurantReservation.dtos.request.LogicDeleteTavoloDTORequest;
 import com.restaurant.RestaurantReservation.dtos.request.TavoloDTORequest;
 import com.restaurant.RestaurantReservation.dtos.response.TavoloDTOResponse;
@@ -21,4 +23,6 @@ public interface TavoloService {
 	void deleteTavoloById(Integer idTavolo) throws NotFoundException;
 
 	List<TavoloDTOResponse> logicDeleteTavoli(List<LogicDeleteTavoloDTORequest> logicTavoli);
+
+	Page<TavoloDTOResponse> getTavoliDisponibili(Boolean utilizzabile, Integer page, Integer size);
 }
